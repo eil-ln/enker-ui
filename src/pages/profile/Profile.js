@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 // TODO use --> import {Redirect} from 'react-router-dom';
-import { Container } from 'react-bootstrap';
+import {Container, Form, Button, Row, Col} from 'react-bootstrap';
 
 /**
  * React component for Profile page
@@ -27,8 +27,57 @@ class Profile extends Component {
     // }
     return (
       <Container className="mt-5">
-        <div>TODO: add Profile form page showing logged in user data</div>
-      </Container>      
+        <Row>
+          <Col className="mx-auto">
+            <h1 className="my-3 text-center">Profile</h1>
+            <Form onSubmit={this.handleSubmit}>
+              <Form.Group controlId="formEmail">
+                <Form.Label>Email address</Form.Label>
+                <Form.Control type="email" placeholder="Enter email" required/>
+              </Form.Group>
+
+              <Form.Group controlId="formFName">
+                <Form.Label>First Name</Form.Label>
+                <Form.Control type="text" placeholder="Enter First Name" required/>
+              </Form.Group>
+
+              <Form.Group controlId="formLName">
+                <Form.Label>Last Name</Form.Label>
+                <Form.Control type="text" placeholder="Enter Last Name" required/>
+              </Form.Group>
+
+              <Form.Group controlId="formPassword">
+                <Form.Label>Password</Form.Label>
+                <Form.Control type="password" placeholder="Password" required/>
+              </Form.Group>
+
+              <Form.Group controlId="formLearningTargets">
+                <Form.Label>Learning Targets</Form.Label>
+                <Form.Control as="select" multiple>
+                  <option>Animation</option>
+                  <option>Game Development</option>
+                  <option>Filmmakink</option>
+                  <option>Web Development</option>
+                </Form.Control>
+              </Form.Group>
+
+              <Form.Group controlId="formLocation">
+                <Form.Label>Location</Form.Label>
+                <Form.Control as="select">
+                  <option>Yerevan</option>
+                  <option>Gyumri</option>
+                  <option>Stepanakert</option>
+                  <option>Dilijan</option>
+                </Form.Control>
+              </Form.Group>
+
+              <Button variant="primary" type="submit">
+                Update
+              </Button> 
+            </Form>
+          </Col>
+        </Row>
+      </Container>
     )
   }
 }

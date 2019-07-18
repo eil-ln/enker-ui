@@ -2,15 +2,38 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 // TODO: use --> import {Redirect} from 'react-router-dom';
-import {Container} from 'react-bootstrap';
+import {Container, Form, Button, Row, Col, Image} from 'react-bootstrap';
 
 /**
  * Component for Login Page
  */
 export default class Login extends Component {
-  // constructor(props) {
-    // TODO: set state and form handlers
-  // }
+  constructor(props) {
+    super(props)
+    this.state = {
+      email: "",
+      password: ""
+    }
+  }
+
+  handleSubmit = event => {
+    event.preventDefault();
+    alert(`Logged in as ${this.state.email}`);
+  }
+
+  handleEmailChange = event => {
+    this.setState({ 
+      email: event.target.value
+    })
+  }
+
+  handlePasswordChange = event => {
+    this.setState({
+      password: event.target.value
+    })
+  }
+
+
   render() {
     // TODO: use to redirect if user not logged in
     // if (this.props.user) {
@@ -20,63 +43,33 @@ export default class Login extends Component {
     //     }} />
     //   )
     // }
+
     return (
-      <Container className="mt-3">
-        <div className="row">
-            <div className="col-xs-12 col-sm-10 col-md-6 mx-auto my-5">
-              <form>
-                <img
-                  width="100%"
-                  src="https://newsroom.aua.am/files/2017/08/american-times_tumo-center-logo-2.png"
-                  alt="Tumo"
-                />
-                <div className="form-label-group text-left my-4">
-                  <label className="text-left" htmlFor="inputEmail">
-                    Email address:{" "}
-                  </label>
-                  <input
-                    type="email"
-                    id="inputEmail"
-                    className="form-control"
-                    placeholder="Email address"
-                    required
-                    autoFocus
-                  />
-                </div>
+      <Container className="mt-5">
+        <Row>
+          <Col className="mx-auto" xs={10} sm={10} md={7} >
+            <Image width="100%" src="https://newsroom.aua.am/files/2017/08/american-times_tumo-center-logo-2.png" alt="Tumo Logo"/>
+            <Form onSubmit={this.handleSubmit}>
+              <Form.Group controlId="formEmail">
+                <Form.Label>Email address</Form.Label>
+                <Form.Control type="email" placeholder="Enter email" value={this.state.email} onChange={this.handleEmailChange} required/>
+              </Form.Group>
 
-                <div className="form-label-group text-left">
-                  <label htmlFor="inputPassword">Password: </label>
-                  <input
-                    type="password"
-                    id="inputPassword"
-                    className="form-control"
-                    placeholder="Password"
-                    required
-                  />
-                </div>
+              <Form.Group controlId="formPassword">
+                <Form.Label>Password</Form.Label>
+                <Form.Control type="password" placeholder="Password" value={this.state.password} onChange={this.handlePasswordChange} required/>
+              </Form.Group>
 
-                <div className="custom-control custom-checkbox mb-3">
-                  <input
-                    type="checkbox"
-                    className="custom-control-input"
-                    id="customCheck1"
-                  />
-                  <label
-                    className="custom-control-label"
-                    htmlFor="customCheck1"
-                  >
-                    Remember password
-                  </label>
-                </div>
-                <button
-                  className="btn btn-ld btn-primary btn-block text-uppercase"
-                  type="submit"
-                >
-                  Sign in
-                </button>
-              </form>
-            </div>
-          </div>`
+              <Form.Group controlId="formChecbox">
+                <Form.Check type="checkbox" label="Remember password" />
+              </Form.Group>
+
+              <Button className="mx-auto" variant="primary" type="submit">
+                Submit
+              </Button> 
+            </Form>
+          </Col>
+        </Row>
       </Container>
     )
   }
