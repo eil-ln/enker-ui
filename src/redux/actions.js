@@ -15,6 +15,8 @@ export const createUser = (email, password, firstName, lastName, learningTargets
     };
     axios.post(`${apiHost}/students`, user)
     .then(response => {
+      sessionStorage.setItem('email', user.email);
+      sessionStorage.setItem('password', user.password);
       dispatch({
         type: 'CREATE_USER',
         payload: response.data
@@ -41,6 +43,8 @@ export const loginUser = (email, password) => {
      */
     axios.get(`${apiHost}/students/${email}`, { auth: {username: email, password: password} })
       .then(response => {
+        sessionStorage.setItem('email', email);
+        sessionStorage.setItem('password', password);
         dispatch({
           type: "LOGIN_USER",
           payload: response.data

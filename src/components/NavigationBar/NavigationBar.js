@@ -41,9 +41,9 @@ export default ({user, location}) => (
         </Nav>
       </Navbar.Collapse>      
       {
-        user.firstName ? (
-          <p className="text-white">Hello {user.firstName}</p>
-        ) : null
+        // user.firstName ? (
+        //   <p className="text-white">Hello {user.firstName}</p>
+        // ) : null
         /**
          * TODO: When user logged in
          * 1. Text Hello [user first name]!
