@@ -29,7 +29,6 @@ class Profile extends Component {
         }} />
       )
     }
-    console.log(this.props)
     return (
       <Container className="mt-5">
         <Row>
@@ -59,20 +58,20 @@ class Profile extends Component {
               <Form.Group controlId="formLearningTargets">
                 <Form.Label>Learning Targets</Form.Label>
                 <Form.Control as="select" multiple>
-                  <option>Animation</option>
-                  <option>Game Development</option>
-                  <option>Filmmakink</option>
-                  <option>Web Development</option>
+                  <option value="Animation">Animation</option>
+                  <option value="Game Development">Game Development</option>
+                  <option value="Filmmakink">Filmmakink</option>
+                  <option value="Web Development">Web Development</option>
                 </Form.Control>
               </Form.Group>
 
               <Form.Group controlId="formLocation">
                 <Form.Label>Location</Form.Label>
                 <Form.Control as="select">
-                  <option>Yerevan</option>
-                  <option>Gyumri</option>
-                  <option>Stepanakert</option>
-                  <option>Dilijan</option>
+                  <option value="Yerevan">Yerevan</option>
+                  <option value="Gyumri">Gyumri</option>
+                  <option value="Stepanakert">Stepanakert</option>
+                  <option value="Dilijan">Dilijan</option>
                 </Form.Control>
               </Form.Group>
 

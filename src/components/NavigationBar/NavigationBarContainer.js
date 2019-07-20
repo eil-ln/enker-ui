@@ -4,7 +4,8 @@ import { withRouter } from "react-router";
 import NavigationBar from './NavigationBar';
 
 const mapStateToProps = state => ({
-  // TODO: Provide user data from state
+    user: state.user.data,
+    userError: state.user.error
 })
 
 const mapDispatchToProps = dispatch => {

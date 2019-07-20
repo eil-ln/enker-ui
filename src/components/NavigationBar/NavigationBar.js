@@ -39,14 +39,19 @@ export default ({user, location}) => (
             // ) : null
           }
         </Nav>
-      </Navbar.Collapse>
+      </Navbar.Collapse>      
       {
+        user.firstName ? (
+          <p className="text-white">Hello {user.firstName}</p>
+        ) : null
         /**
          * TODO: When user logged in
          * 1. Text Hello [user first name]!
          * 2. Button to logout user
          * 3. If connected to peer a button to chat
          */
+        // console.log(user.firstName)
+        
       }
     </Navbar>
   </div>

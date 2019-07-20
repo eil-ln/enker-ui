@@ -33,7 +33,6 @@ export default class Login extends Component {
     })
   }
 
-
   render() {
     // TODO: use to redirect if user not logged in
     if (this.props.user) {
