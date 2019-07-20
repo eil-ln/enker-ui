@@ -1,30 +1,35 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-// TODO use --> import {Redirect} from 'react-router-dom';
+import {Redirect} from 'react-router-dom';
 import {Container, Form, Button, Row, Col} from 'react-bootstrap';
 
 /**
  * React component for Profile page
  */
 class Profile extends Component {
-  // constructor() {
-    // TODO: set state based on props, drop down values for learningTargets, locations, form event handlers
-  // }
+  constructor(props) {
+    super(props)
+    this.state = {
+      data: "No Data"
+    }
+  }
   handleSubmit(e) {
     // TODO: EXTRA WORK - handle form submit (if doing updates)
   }
   handleChange(type, value) {
     // TODO: EXTRA WORK - handle form change to set state (if doing updates)
   }
+
   render() {
     // TODO: use to redirect to home page if user not logged in
-    // if (this.props.user == null) {
-    //   return (
-    //     <Redirect to={{
-    //       pathname: '/',
-    //     }} />
-    //   )
-    // }
+    if (this.props.user == null) {
+      return (
+        <Redirect to={{
+          pathname: '/',
+        }} />
+      )
+    }
+    console.log(this.props)
     return (
       <Container className="mt-5">
         <Row>
@@ -33,22 +38,22 @@ class Profile extends Component {
             <Form onSubmit={this.handleSubmit}>
               <Form.Group controlId="formEmail">
                 <Form.Label>Email address</Form.Label>
-                <Form.Control type="email" placeholder="Enter email" required/>
+                <Form.Control value={this.props.user.email} type="email" placeholder="Enter email" required/>
               </Form.Group>
 
               <Form.Group controlId="formFName">
                 <Form.Label>First Name</Form.Label>
-                <Form.Control type="text" placeholder="Enter First Name" required/>
+                <Form.Control value={this.props.user.firstName} type="text" placeholder="Enter First Name" required/>
               </Form.Group>
 
               <Form.Group controlId="formLName">
                 <Form.Label>Last Name</Form.Label>
-                <Form.Control type="text" placeholder="Enter Last Name" required/>
+                <Form.Control value={this.props.user.lastName} type="text" placeholder="Enter Last Name" required/>
               </Form.Group>
 
               <Form.Group controlId="formPassword">
                 <Form.Label>Password</Form.Label>
-                <Form.Control type="password" placeholder="Password" required/>
+                <Form.Control value={this.props.user.password} type="password" placeholder="Password" required/>
               </Form.Group>
 
               <Form.Group controlId="formLearningTargets">

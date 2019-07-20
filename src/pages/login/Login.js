@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { Redirect } from 'react-router-dom'
 
-// TODO: use --> import {Redirect} from 'react-router-dom';
 import {Container, Form, Button, Row, Col, Image} from 'react-bootstrap';
 
 /**
@@ -18,7 +18,7 @@ export default class Login extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    alert(`Logged in as ${this.state.email}`);
+    this.props.loginUser(this.state);
   }
 
   handleEmailChange = event => {
@@ -36,13 +36,13 @@ export default class Login extends Component {
 
   render() {
     // TODO: use to redirect if user not logged in
-    // if (this.props.user) {
-    //   return (
-    //     <Redirect to={{
-    //       pathname: '/profile',
-    //     }} />
-    //   )
-    // }
+    if (this.props.user) {
+      return (
+        <Redirect to={{
+          pathname: '/profile',
+        }} />
+      )
+    }
 
     return (
       <Container className="mt-5">
@@ -59,6 +59,8 @@ export default class Login extends Component {
                 <Form.Label>Password</Form.Label>
                 <Form.Control type="password" placeholder="Password" value={this.state.password} onChange={this.handlePasswordChange} required/>
               </Form.Group>
+
+              <a href="./signup">Sign Up!</a>
 
               <Form.Group controlId="formChecbox">
                 <Form.Check type="checkbox" label="Remember password" />
