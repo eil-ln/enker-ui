@@ -7,9 +7,10 @@ import ProfileIcon from './ProfileIcon';
 import NetworkIcon from './NetworkIcon';
 import SearchIcon from './SearchIcon';
 
+
 import './navigationbar.css';
 
-export default ({user, location}) => (
+export default ({user, location, logoutUser}) => (
   <div className="global-nav">
     <Navbar bg="dark" variant="dark" expand="lg" fixed="top">
       <LinkContainer to="/">
@@ -53,6 +54,7 @@ export default ({user, location}) => (
         // console.log(user.firstName)
         
       }
+      <a href="/login" onClick={() => logoutUser(user) } className="btn">Log Out</a>
     </Navbar>
   </div>
 );

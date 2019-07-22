@@ -9,8 +9,10 @@ const user = (state = {data: null, error: null}, action) => {
      * 2. LOGIN_ERROR
      * 3. UPDATE
      * 4. UPDATE_ERROR 
-     * 5. LOGOUT
-     */   
+     */
+    
+    case 'LOGOUT':
+      return {data: action.payload, error: null};   
     case 'LOGIN_USER':
       return {data: action.payload, error: null};
     case 'LOGIN_USER_ERROR':
