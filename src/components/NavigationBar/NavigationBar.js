@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {Nav, Navbar} from 'react-bootstrap';
+import {Nav, Navbar, Row} from 'react-bootstrap';
 import {LinkContainer} from 'react-router-bootstrap';
 import tumoLogoArm from './tumo-logo-arm.png';
 import ProfileIcon from './ProfileIcon';
@@ -40,21 +40,18 @@ export default ({user, location, logoutUser}) => (
             // ) : null
           }
         </Nav>
-      </Navbar.Collapse>      
+      </Navbar.Collapse>    
       {
-        // user.firstName ? (
-        //   <p className="text-white">Hello {user.firstName}</p>
-        // ) : null
-        /**
-         * TODO: When user logged in
-         * 1. Text Hello [user first name]!
-         * 2. Button to logout user
-         * 3. If connected to peer a button to chat
-         */
-        // console.log(user.firstName)
+        user ? (
+            <div className="text-white">
+              Hello {user.firstName} 
+              <a href="/login" onClick={() => logoutUser(user) } className="btn btn-warning mx-2">Log Out</a>
+            </div>
+        ) : ""
+
         
       }
-      <a href="/login" onClick={() => logoutUser(user) } className="btn">Log Out</a>
+      
     </Navbar>
   </div>
 );

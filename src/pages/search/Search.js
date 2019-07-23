@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Socket from '../../socket';
-import {Container, InputGroup, Form, Button, Row, Col, ListGroup} from 'react-bootstrap';
+import {Container, InputGroup, Form, Button, Row, Col, ListGroup, Badge} from 'react-bootstrap';
 // import { Socket } from 'dgram';
 
 /**
@@ -17,17 +17,19 @@ class Search extends React.Component {
       query: ''
     }
   }
+
   componentDidMount() {
     // TODO: event handlers if user logged in or out, run query
   }
+
   handleSubmit(e) {
     e.preventDefault();
     Socket.connect(user => {
       user.emit("search", this.state.query, (users) => {
-        this.setState({users});
+        const user = "";
+        this.setState({users, user});
       })
-    })
-    this.setState({user: ''});
+    });
   }
 
   handleChange(query) {
@@ -43,14 +45,13 @@ class Search extends React.Component {
   onStudentLoggedIn() {
     // TODO: Socket event handler if user logged in - run query
   }
+
   onStudentLoggedOut() {
     // TODO: Socket event handler if user logged out - run query
   }
+
   onstartChat(withUser) {
     // TODO: event to invoke start-chat action via Socket, redirect to /network page
-  }
-  query(textSearch) {
-    // TODO: emit query via Socket based on text
   }
 
   render() {
@@ -69,17 +70,17 @@ class Search extends React.Component {
           <Col>
             <ListGroup>
               {this.state.users.map((user, index) => (
-                <ListGroup.Item key={index} onClick={() => this.handleUser(user)} action>{user.firstName}  {user.lastName}</ListGroup.Item>
+                <ListGroup.Item key={index} onClick={() => this.handleUser(user)} action>{user.firstName}  {user.lastName} {user.loggedIn ? <Badge variant="success">Logged In</Badge> : ""}</ListGroup.Item>
               ))}
             </ListGroup>
           </Col>
           <Col>
             {this.state.user ? (
               <div>
-                <p>First Name: {this.state.user.firstName}</p>
-                <p>First Name: {this.state.user.lastName}</p> 
-                <p>Location: {this.state.user.location}</p>
-                <p>Learning Targets: {this.state.user.learningTargets.join()}</p>
+                First Name: {this.state.user.firstName} <br />
+                Last Name: {this.state.user.lastName} <br />
+                Location: {this.state.user.location} <br />
+                Learning Targets: {this.state.user.learningTargets.join()}
               </div>
             ) : ""}
           </Col>
