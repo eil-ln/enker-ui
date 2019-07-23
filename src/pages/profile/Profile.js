@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {Redirect} from 'react-router-dom';
-import {Container, Form, Button, Row, Col} from 'react-bootstrap';
+import {Container, Form, Row, Col} from 'react-bootstrap';
 
 /**
  * React component for Profile page
@@ -67,7 +67,7 @@ class Profile extends Component {
 
               <Form.Group controlId="formLocation">
                 <Form.Label>Location</Form.Label>
-                <Form.Control as="select">
+                <Form.Control value={this.props.user.location} as="select">
                   <option value="Yerevan">Yerevan</option>
                   <option value="Gyumri">Gyumri</option>
                   <option value="Stepanakert">Stepanakert</option>
@@ -75,9 +75,9 @@ class Profile extends Component {
                 </Form.Control>
               </Form.Group>
 
-              <Button variant="primary" type="submit">
+              {/* <Button variant="primary" type="submit">
                 Update
-              </Button> 
+              </Button>  */}
             </Form>
           </Col>
         </Row>

@@ -22,10 +22,12 @@ class Signup extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
+
   handleSubmit(e) {
     e.preventDefault();
     this.props.createUser(this.state);
   }
+  
   handleChange(type, value) {
     if (type === "learningTargets") {
       const valueAsArray = Array.from(value); // Convert HTMLCollections to Array
